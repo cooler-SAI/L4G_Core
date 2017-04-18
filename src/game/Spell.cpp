@@ -2635,6 +2635,9 @@ void Spell::cast(bool skipCheck)
     {
         SpellEntry const *auraSpellInfo = (*i)->GetSpellProto();
         uint32 auraSpellIdx = (*i)->GetEffIndex();
+        if (auraSpellIdx == 16166)
+            continue;
+
         if (IsAffectedBy(auraSpellInfo, auraSpellIdx))
         {
             if (SpellEntry const *spellInfo = sSpellStore.LookupEntry(auraSpellInfo->EffectTriggerSpell[auraSpellIdx]))
