@@ -2681,12 +2681,15 @@ void Spell::cast(bool skipCheck)
 
     if (spellInfo->AttributesCu & SPELL_ATTR_CU_LINK_CAST)
     {
-        if (const std::vector<int32> *spell_triggered = sSpellMgr.GetSpellLinked(spellInfo->Id))
-            for (std::vector<int32>::const_iterator i = spell_triggered->begin(); i != spell_triggered->end(); ++i)
-                if (*i < 0)
-                    m_caster->RemoveAurasDueToSpell(-(*i));
-                else
-                    m_caster->CastSpell(m_targets.getUnitTarget() ? m_targets.getUnitTarget() : m_caster, *i, true);
+        if (spellInfo->Id != 16166)
+        {
+            if (const std::vector<int32> *spell_triggered = sSpellMgr.GetSpellLinked(spellInfo->Id))
+                for (std::vector<int32>::const_iterator i = spell_triggered->begin(); i != spell_triggered->end(); ++i)
+                    if (*i < 0)
+                        m_caster->RemoveAurasDueToSpell(-(*i));
+                    else
+                        m_caster->CastSpell(m_targets.getUnitTarget() ? m_targets.getUnitTarget() : m_caster, *i, true);
+        }
     }
 
     SetExecutedCurrently(false);
