@@ -2635,7 +2635,7 @@ void Spell::cast(bool skipCheck)
     {
         SpellEntry const *auraSpellInfo = (*i)->GetSpellProto();
         uint32 auraSpellIdx = (*i)->GetEffIndex();
-        if (auraSpellIdx == 16166)
+        if (auraSpellInfo->Id ==16166 || auraSpellIdx == 16166)
             continue;
 
         if (IsAffectedBy(auraSpellInfo, auraSpellIdx))
