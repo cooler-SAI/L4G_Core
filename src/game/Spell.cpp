@@ -1026,7 +1026,7 @@ void Spell::DoAllEffectOnTarget(TargetInfo *target)
         // Do triggers for unit (reflect triggers passed on hit phase for correct drop charge)
         if (missInfo != SPELL_MISS_REFLECT)
         {
-            if (!caster->HasAura(16166))
+            if (!caster->HasAura(16870) && !caster->HasAura(16246) && !caster->HasAura(16166))
             {
                 caster->ProcDamageAndSpell(unitTarget, procAttacker, procVictim, procEx, damageInfo.damage, m_attackType, GetSpellInfo(), m_canTrigger);
                 if (caster->GetTypeId() == TYPEID_PLAYER && !((Player *)caster)->IsInFeralForm(true))
